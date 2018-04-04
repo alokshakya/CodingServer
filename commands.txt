@@ -1,0 +1,48 @@
+ALOK SHAKYA@DESKTOP-SR2L0A6 MINGW64 ~/Desktop/AngularCourseEra/Hasura
+$ hasura login
+• Trying to open browser for authentication...
+• Copy and paste this URL manually into a browser in case it is not opened autom                                                                                                                atically:
+
+https://oauth.hasura.io/oauth2/auth?access_type=offline&client_id=hasuractl&redi                                                                                                                rect_uri=http%3A%2F%2Flocalhost%3A9690%2Foauth_callback&response_type=code&scope                                                                                                                =session&state=hasuractl
+
+• Waiting for authentication...
+✓ Logged in!
+• If you are new to Hasura, run the following command to get started:
+
+  $ hasura quickstart hello-world
+
+or choose another quickstart project from https://hasura.io/hub
+
+ALOK SHAKYA@DESKTOP-SR2L0A6 MINGW64 ~/Desktop/AngularCourseEra/Hasura
+$ hasura clone hasura/hello-nodejs-express
+✓ Project cloned directory=C:\Users\ALOK SHAKYA\Desktop\AngularCourseEra\Hasura\                                                                                                                hello-nodejs-express
+
+ALOK SHAKYA@DESKTOP-SR2L0A6 MINGW64 ~/Desktop/AngularCourseEra/Hasura
+$ hasura cluster create --type=free
+• Kubernetes context has been added to this system context=enlightenment56
+✓ Hasura cluster created cluster-name=enlightenment56
+  # Add this cluster to your project with an alias 'hasura':
+  $ hasura cluster add enlightenment56 -c hasura
+
+ALOK SHAKYA@DESKTOP-SR2L0A6 MINGW64 ~/Desktop/AngularCourseEra/Hasura
+$ hasura cluster add enlightenment56 -c hasura
+× hasura cluster add failed error=[1000] This directory (or any parent upto /) i                                                                                                                s not a valid Hasura project. Make sure clusters.yaml, hasura.yaml, microservice                                                                                                                s/, migrations/, conf/ are present and are not empty | Stopping at filesystem bo                                                                                                                undary
+
+ALOK SHAKYA@DESKTOP-SR2L0A6 MINGW64 ~/Desktop/AngularCourseEra/Hasura
+$ ls
+hello-nodejs-express/
+
+ALOK SHAKYA@DESKTOP-SR2L0A6 MINGW64 ~/Desktop/AngularCourseEra/Hasura
+$ cd hello-nodejs-express
+
+ALOK SHAKYA@DESKTOP-SR2L0A6 MINGW64 ~/Desktop/AngularCourseEra/Hasura/hello-node                                                                                                                js-express (master)
+$ hasura cluster add enlightenment56 -c hasura
+✓ Cluster added to project
+ # you need to add your SSH key to push to this cluster:
+  $ hasura ssh-key add -c hasura
+
+ALOK SHAKYA@DESKTOP-SR2L0A6 MINGW64 ~/Desktop/AngularCourseEra/Hasura/hello-node                                                                                                                js-express (master)
+$ hasura ssh-key add -c hasura
+✓ SSH key (C:\Users\ALOK SHAKYA\.ssh\id_rsa.pub) added cluster=hasura [enlighten                                                                                                                ment56]
+
+ALOK SHAKYA@DESKTOP-SR2L0A6 MINGW64 ~/Desktop/AngularCourseEra/Hasura/hello-node                                                                                                                js-express (master)
