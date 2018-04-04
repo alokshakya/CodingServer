@@ -52,12 +52,16 @@ $(document).ready(function(){
 				
 			  },
 			  success:function(data){
-			  	//todo on success
+                  //todo on success
+                  //show these immidiately
+                  document.getElementById("btn").innerHTML='Submitted';
+                      $("#feedback ul").append('<li> Affected Rows :'+data.affected_rows+'</li>');
+                      
                   setTimeout(function(){ 
-                    document.getElementById("btn").innerHTML='Submited';
-			  		$("#feedback ul").append('<li> Affected Rows :'+data.affected_rows+'</li>');
+                      // this function is used to change status of Submitted to Submit after 2 sec
+                    document.getElementById("btn").innerHTML='Submit';
                     }, 2000);
-                    document.getElementById("btn").innerHTML='Submit';	
+                    	
 			  	
 			  	
 			  },
