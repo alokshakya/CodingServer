@@ -30,7 +30,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.get('/question', function(req, res) {
-	res.sendFile('views/submitQuestion.html', {root: __dirname })
+	res.sendFile('views/question.html', {root: __dirname })
 });
 app.use('/', hasuraExamplesRouter);
 
