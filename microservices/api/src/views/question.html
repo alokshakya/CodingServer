@@ -20,7 +20,7 @@ $(document).ready(function(){
 	$("#feedback_form").submit(function(event){
 		//alert('clicked');
 	    event.preventDefault(); //prevent default action 
-	    document.getElementById("btn").innerHTML='Submitting';
+	    document.getElementById("btn").innerHTML='Submitting....';
   //ajax method starts here
   var sqldata=JSON.stringify(
     {
@@ -48,14 +48,16 @@ $(document).ready(function(){
 			  error: function(e) { 
 				  console.log(e);
 				  document.getElementById("btn").innerHTML='Submition Failed Try Again';
-				  document.getElementById("err").innerHTML=errHTML;
+				  
 				
 			  },
 			  success:function(data){
 			  	//todo on success
-			  
-			  		document.getElementById("btn").innerHTML='Submit';
-			  		$("#feedback ul").append('<li>'+data.name+': '+data.email+':'+data.comment+':'+data.subject+'</li>');	
+                  setTimeout(function(){ 
+                    document.getElementById("btn").innerHTML='Submited';
+			  		$("#feedback ul").append('<li> Affected Rows :'+data.affected_rows+'</li>');
+                    }, 2000);
+                    document.getElementById("btn").innerHTML='Submit';	
 			  	
 			  	
 			  },
@@ -76,12 +78,12 @@ $(document).ready(function(){
   
     <p>Submit Questions</p>
     <form  id="feedback_form">
-      <input           type="textarea" row="4" placeholder="Question"        id="question">
-      <input  type="textarea" row="4" placeholder="A Option"      id="a_option">
-      <input type="textarea" row="4" placeholder="B Option"  id="b_option">
-      <input  type="textarea" row="4" placeholder="C Option"  id="c_option">
-      <input type="textarea" row="4" placeholder="D Option"  id="d_option">
-      <input type="textarea" row="4" placeholder="Answer"  id="ans">
+      <textarea rows= "4" cols="100" placeholder="Question" id="question"></textarea><br>
+      <textarea rows= "4" cols="100" placeholder="A Option" id="a_option"></textarea><br>
+      <textarea rows= "4" cols="100"  placeholder="B Option"  id="b_option"></textarea><br>
+      <textarea rows= "4" cols="100"   placeholder="C Option"  id="c_option"></textarea><br>
+      <textarea rows= "4" cols="100" placeholder="D Option"  id="d_option"></textarea><br>
+      <textarea rows= "4" cols="100"  placeholder="Answer"  id="ans"></textarea><br>
     
       
       <button  type="submit" id="btn">
