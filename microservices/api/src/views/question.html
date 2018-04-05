@@ -34,7 +34,9 @@ $(document).ready(function(){
                               "b": document.getElementById("b_option").value,
                               "c": document.getElementById("c_option").value,
                               "d": document.getElementById("d_option").value,
-                              "ans": document.getElementById("ans").value
+                              "ans": document.getElementById("ans").value,
+                              "category": document.getElementById("category").value,
+                              "tag": document.getElementById("tag").value
                           }
                     ]
             }
@@ -67,6 +69,8 @@ $(document).ready(function(){
                     document.getElementById("c_option").value='';
                     document.getElementById("d_option").value='';
                     document.getElementById("ans").value='';
+                    document.getElementById("category").value='';
+                    document.getElementById("tag").value='';
                     }, 2000);
                     	
 			  	
@@ -95,6 +99,8 @@ $(document).ready(function(){
       <textarea rows= "4" cols="100"   placeholder="C Option"  id="c_option"></textarea><br>
       <textarea rows= "4" cols="100" placeholder="D Option"  id="d_option"></textarea><br>
       <textarea rows= "4" cols="100"  placeholder="Answer"  id="ans"></textarea><br>
+      <textarea rows= "4" cols="100"  placeholder="Category"  id="category"></textarea><br>
+      <textarea rows= "4" cols="100"  placeholder="Tag"  id="tag"></textarea><br>
     
       
       <button  type="submit" id="btn">
