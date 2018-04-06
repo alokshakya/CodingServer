@@ -57,7 +57,7 @@ $(document).ready(function(){
                     console.log(JSON.stringify(res[i]));
                     output+=
                     '<div >'+
-                    '<h3>Q '+(i+1)+' : '+res[i].Question+'</h3>'+
+                    '<h3>Q '+res[i].id+' : '+res[i].Question+'</h3>'+
                     '<form>'+
                         '<input type="radio" name="gender" > (A)'+res[i].a+'<br>'+
                         '<input type="radio" name="gender" > (B) '+res[i].b+'<br>'+
