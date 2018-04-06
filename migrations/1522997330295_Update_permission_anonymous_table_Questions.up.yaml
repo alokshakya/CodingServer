@@ -1,0 +1,20 @@
+- args:
+    role: anonymous
+    table: Questions
+  type: drop_select_permission
+- args:
+    permission:
+      columns:
+      - Question
+      - a
+      - ans
+      - b
+      - c
+      - category
+      - d
+      - id
+      - tag
+      filter: {}
+    role: anonymous
+    table: Questions
+  type: create_select_permission

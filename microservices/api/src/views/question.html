@@ -10,13 +10,84 @@
 </head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<style>
+  .hide{
+    display: none;
+  }
+</style>
 <script type="text/javascript">	
 
 $(document).ready(function(){
 
 	   // jQuery methods go here...
 	document.getElementById("btn").innerHTML='Submit';
+  document.getElementById("showFormBtn").innerHTML='Form is Shown to Submit Questions';
+  document.getElementById("showQuestionsBtn").innerHTML='Show Questions';
+  $("#showQuestionsBtn").click(function(event){
+      
+      document.getElementById("showQuestionsBtn").innerHTML='Fetching Questions . . .';
+      $("#form").addClass("hide");
+      //write ajax Function
+      var reqData=JSON.stringify(
+        {
+            "type": "select",
+            "args": {
+                "table": "Questions",
+                "columns": [
+                    "*"
+                ]
+            }
+        }
+      );
+      //ajax starts
+      $.ajax({
+			  type: 'POST',
+			  url: "https://data.enlightenment56.hasura-app.io/v1/query",
+			  data:sqldata,
+			  error: function(e) { 
+				  console.log(e);
+				  document.getElementById("showFormBtn").innerHTML='Fetching Question Failed Try Again';
+				  
+				
+			  },
+			  success:function(res){
+                  //todo on success
+                  var output='';
+                  for (var i in res){
+                    console.log(JSON.stringify(res[i]));
+                    output+=
+                    '<div >'+
+                    '<h3>Q '+(i+1)+' : '+res[i].question+'</h3>'+
+                    '<form>'+
+                        '<input type="radio" name="gender" > (A)'+res[i].a+'<br>'+
+                        '<input type="radio" name="gender" > (B) '+res[i].b+'<br>'+
+                        '<input type="radio" name="gender" > (C)'+res[i].c+'<br>'+
+                        '<input type="radio" name="gender" > (D)'+res[i].d+'<br>'+
+                      '</form>'+
+                      '<p>Answer : '+res[i].answer+'</p>'+
+                      '<p>Explanation : '+res[i].explanation+'</p>'+
+                      '<p>Tag: '+res[i].tag+'</p><br><br><hr>'
+                  }
+                  
+                    document.getElementById("showQuestionsBtn").innerHTML='Fetched ';
+                    document.getElementById("showFormBtn").innerHTML='Hide Questions and Show Form';
+                    document.getElementById("showQuestions").innerHTML=output;
+                    $("#showQuestions").removeClass("hide");
+        	
+			  },
+			  dataType: "json",
+			  contentType: "application/json"
+			});
+	    //ajax method ended
+
+  });
+
+  $("#showFormBtn").click(function(event){
+    $("#form").removeClass("hide");
+    $("#showQuestions").addClass("hide");
+    document.getElementById("showQuestionsBtn").innerHTML='Show Questions';
+    document.getElementById("showFormBtn").innerHTML='Form is Shown to Submit Questions';
+  });
 	$("#feedback_form").submit(function(event){
 		//alert('clicked');
 	    event.preventDefault(); //prevent default action 
@@ -85,12 +156,19 @@ $(document).ready(function(){
 	});
 </script>
 <body>
+    <button id="showQuestionsBtn">
+    </button>
+    <button id="showFormBtn">
+      </button>
+  <div id="showQuestions">
+  
+  </div>
   <div id="feedback">
     <ul>
     </ul>
     </div>
   <!-- Contact Section -->
-  
+  <div id="form">
     <p>Submit Questions</p>
     <form  id="feedback_form">
       <textarea rows= "4" cols="100" placeholder="Question" id="question"></textarea><br>
