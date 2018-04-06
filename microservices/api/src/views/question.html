@@ -43,7 +43,7 @@ $(document).ready(function(){
       $.ajax({
 			  type: 'POST',
 			  url: "https://data.enlightenment56.hasura-app.io/v1/query",
-			  data:sqldata,
+			  data:reqData,
 			  error: function(e) { 
 				  console.log(e);
 				  document.getElementById("showFormBtn").innerHTML='Fetching Question Failed Try Again';
