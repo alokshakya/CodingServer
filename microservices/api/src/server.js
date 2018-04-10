@@ -32,7 +32,7 @@ app.use(express.static('dist'));
 app.get('/question', function(req, res) {
 	res.sendFile('views/question.html', {root: __dirname })
 });
-app.use('/', hasuraExamplesRouter);
+
 
 app.listen(8080, function () {
   console.log('Example app listening on port 8080!');
