@@ -169,7 +169,7 @@ app.post('/sampleTest',function(req, res){
     }
     console.log(options);
     console.log('before axios query');
-    var resdata=JSON.stringify(query(options));
+    var resdata=axios(options);
     console.log('after axios query');
      //send data to client
     console.log('resdata stdout' + resdata.stdout +' stderror'+ resdata.stderr+ 'error ' +resdata.error );
