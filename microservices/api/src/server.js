@@ -146,7 +146,7 @@ app.post('/checkTest/v2',function(req, res){
      //send data to client
     console.log('resdata stdout' + resdata.stdout +' stderror'+ resdata.stderr+ 'error ' +resdata.error );
 	res.setHeader('Content-Type','application/json');
-	res.send(options);
+	res.send(resdata);
 });
 
 app.post('/sampleTest',function(req, res){
@@ -169,7 +169,7 @@ app.post('/sampleTest',function(req, res){
     }
     console.log(options);
     console.log('before axios query');
-    var resdata=query(options);
+    var resdata=JSON.stringify(query(options));
     console.log('after axios query');
      //send data to client
     console.log('resdata stdout' + resdata.stdout +' stderror'+ resdata.stderr+ 'error ' +resdata.error );
