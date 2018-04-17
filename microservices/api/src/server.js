@@ -165,7 +165,7 @@ app.post('/sampleTest',function(req, res){
             
         },
     }
-    console.log(JSON.stringify(options));
+    console.log(options);
     var resdata=await axios(options);
      //send data to client
     console.log('resdata stdout' + resdata.stdout +' stderror'+ resdata.stderr+ 'error ' +resdata.error );
