@@ -148,7 +148,7 @@ app.post('/checkTest/v2',function(req, res){
 });
 
 app.post('/sampleTest',function(req, res){
-
+    console.log('data in server '+req.body);
 	var options = {
         url: `https://run.glot.io/languages/python/latest`,
         method: 'post',
@@ -166,7 +166,9 @@ app.post('/sampleTest',function(req, res){
         },
     }
     console.log(options);
-    var resdata=await axios(options);
+    console.log('before axios query');
+    var resdata=query(options);
+    console.log('after axios query');
      //send data to client
     console.log('resdata stdout' + resdata.stdout +' stderror'+ resdata.stderr+ 'error ' +resdata.error );
 	res.setHeader('Content-Type','application/json');
