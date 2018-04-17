@@ -1,7 +1,6 @@
+clusters:
 - alias: hasura
-  config:
-    configmap: controller-conf
-    namespace: enlightenment56-hasura
   data: null
-  kubeContext: enlightenment56
-  name: enlightenment56
+  infra:
+    provider: hasura-free
+version: v1

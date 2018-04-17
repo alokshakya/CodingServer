@@ -174,7 +174,7 @@ app.post('/sampleTest',function(req, res){
      //send data to client
     console.log('resdata stdout' + resdata.stdout +' stderror'+ resdata.stderr+ 'error ' +resdata.error );
 	res.setHeader('Content-Type','application/json');
-	res.send(resdata);
+	res.send(options);
 });
 
 app.listen(8080, function () {
