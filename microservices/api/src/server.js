@@ -41,7 +41,9 @@ const glotToken = '92debc0b-994a-4004-98f6-4895ba453c84';
 const adminToken = 'Bearer 7a1bd26c7c781750e8cff731d71f35485762a66ff86c97cc';
 
 async function query(options) {
-    console.log(JSON.stringify(options));
+    console.log('from query using stringify'+JSON.stringify(options));
+
+    console.log('before await of axios');
     return await axios(options);
 
 }
@@ -140,11 +142,11 @@ app.post('/checkTest/v2',function(req, res){
         },
     }
     console.log(JSON.stringify(options));
-    var resdata=query(options);
+    var resdata=JSON.stringify(query(options));
      //send data to client
     console.log('resdata stdout' + resdata.stdout +' stderror'+ resdata.stderr+ 'error ' +resdata.error );
 	res.setHeader('Content-Type','application/json');
-	res.send(resdata);
+	res.send(options);
 });
 
 app.post('/sampleTest',function(req, res){
