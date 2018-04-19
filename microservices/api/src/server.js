@@ -289,8 +289,8 @@ app.post('/test3',function(req, res){
         } else {
           // Something happened in setting up the request that triggered an Error
           console.log('Error', error.message);
-          res.setHeader('Content-Type','application/json');
-	    res.send({"error":"some error occured"});
+          //res.setHeader('Content-Type','application/json');
+	    //res.send({"error":"some error occured"});
         }
         console.log(error.config);
       });
