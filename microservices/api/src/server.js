@@ -269,15 +269,30 @@ app.post('/test3',function(req, res){
     }
     axios(options)
       .then(function (response) {
-        console.log('response from server' +response);
+        console.log('response from server '+response);
         //console.log('response.data stdout' + resdata.data.stdout +' stderror'+ resdata.data.stderr+ 'error ' +resdata.data.error );
-        res.setHeader('Content-Type','application/json');
+        //res.setHeader('Content-Type','application/json');
 	    res.send(response);
       })
       .catch(function (error) {
-        console.log('error occured')
-        res.setHeader('Content-Type','application/json');
-        res.send(error);
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.log('res data :'+error.response.data);
+          console.log('res status :'+error.response.status);
+          console.log('res headers :'+error.response.headers);
+        } else if ('res request : '+error.request) {
+          // The request was made but no response was received
+          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+          // http.ClientRequest in node.js
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log('Error', error.message);
+          res.setHeader('Content-Type','application/json');
+	    res.send({"error":"some error occured"});
+        }
+        console.log('error config '+error.config);
       });
     
 
