@@ -9,8 +9,10 @@ require('request-debug')(request);
 
 var hasuraExamplesRouter = require('./hasuraExamples');
 
-var server = require('http').Server(app);
+//var server = require('http').Server(app);
+var path = require('path');
 
+var server = require('http').Server(app);
 router.use(morgan('dev'));
 
 app.engine('handlebars', exphbs({
@@ -177,6 +179,6 @@ app.post('/sampleTest',function(req, res){
 	res.send(options);
 });
 
-app.listen(8080, function () {
+server.listen(8080, function () {
   console.log('Example app listening on port 8080!');
 });
