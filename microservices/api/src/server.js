@@ -172,11 +172,11 @@ app.post('/sampleTest',function(req, res){
     console.log(options);
     console.log('before axios query');
     var resdata=axios(options);
-    console.log('after axios query');
+    console.log('after axios query resdata.data '+resdata.data+'resdata.status'+resdata.status);
      //send data to client
-    console.log('resdata stdout' + resdata.stdout +' stderror'+ resdata.stderr+ 'error ' +resdata.error );
+    console.log('resdata stdout' + resdata.data.stdout +' stderror'+ resdata.data.stderr+ 'error ' +resdata.data.error );
 	res.setHeader('Content-Type','application/json');
-	res.send(options);
+	res.send(resdata.data);
 });
 
 server.listen(8080, function () {
