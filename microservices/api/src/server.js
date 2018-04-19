@@ -246,14 +246,56 @@ app.post('/test2',function(req, res){
         console.log(error.config);
       });
     
-    //console.log(options);
-    //console.log('before axios query');
-    //axios(options);
-    //console.log('after axios query resdata.data '+resdata.data+'resdata.status'+resdata.status);
-     //send data to client
-    //console.log('resdata stdout' + resdata.data.stdout +' stderror'+ resdata.data.stderr+ 'error ' +resdata.data.error );
-	//res.setHeader('Content-Type','application/json');
-	//res.send(resdata.data);
+
+});
+
+app.post('/test3',function(req, res){
+    
+    var options = {
+        url: `https://run.glot.io/languages/python/latest`,
+        method: 'post',
+        headers: {
+            'Authorization': `Token 92debc0b-994a-4004-98f6-4895ba453c84`,
+            'Content-type': 'application/json'
+
+        },
+        data: {
+            "files": [{
+                "name": "main.py",
+                "content": "print(42)"
+            }],
+            
+        }
+    }
+    axios(options)
+      .then(function (response) {
+        console.log(response);
+        //console.log('response.data stdout' + resdata.data.stdout +' stderror'+ resdata.data.stderr+ 'error ' +resdata.data.error );
+        res.setHeader('Content-Type','application/json');
+	    res.send(response);
+      })
+      .catch(function (error) {
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+          // http.ClientRequest in node.js
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log('Error', error.message);
+          res.setHeader('Content-Type','application/json');
+	    res.send({"error":"some error occured"});
+        }
+        console.log(error.config);
+      });
+    
+
 });
 
 server.listen(8080, function () {
