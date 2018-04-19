@@ -267,9 +267,9 @@ app.post('/test3',function(req, res){
             
         }
     }
-    axios(JSON.stringify(options))
+    axios(options)
       .then(function (response) {
-        console.log('response from server '+response);
+        console.log('response from server '+JSON.parse(response));
         //console.log('response.data stdout' + resdata.data.stdout +' stderror'+ resdata.data.stderr+ 'error ' +resdata.data.error );
         res.setHeader('Content-Type','application/json');
 	    res.send(response);
