@@ -223,7 +223,7 @@ app.post('/test2',function(req, res){
         console.log(response);
         //console.log('response.data stdout' + resdata.data.stdout +' stderror'+ resdata.data.stderr+ 'error ' +resdata.data.error );
         res.setHeader('Content-Type','application/json');
-	    res.send(resdata.data);
+	    res.send(response);
       })
       .catch(function (error) {
         if (error.response) {
