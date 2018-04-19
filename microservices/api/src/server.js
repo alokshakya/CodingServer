@@ -271,7 +271,7 @@ app.post('/test3',function(req, res){
       .then(function (response) {
         console.log(response);
         //console.log('response.data stdout' + resdata.data.stdout +' stderror'+ resdata.data.stderr+ 'error ' +resdata.data.error );
-        res.setHeader('Content-Type','application/json');
+        //res.setHeader('Content-Type','application/json');
 	    res.send(response);
       })
       .catch(function (error) {
