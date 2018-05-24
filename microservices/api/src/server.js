@@ -354,13 +354,15 @@ app.post('/test4',function(req, res){
 });
 app.post('/test5',function(req, res){
     var lang=req.body.language;
-    var input=req.body.input;
-    var files=req.body.files;
+    var input=req.body.stdin;
+    var name=req.body.name;
+    var content=req.body.content;
     console.log('lang : '+lang);
-    console.log('input : '+input);
-    console.log('files : '+files);
+    console.log('input : '+stdin);
+    console.log('filename : '+name);
+    console.log('content : '+content);
     var options = {
-        url: `https://run.glot.io/languages/python/latest`,
+        url: `https://run.glot.io/languages/${lang}/latest`,
         method: 'post',
         headers: {
             'Authorization': `Token 92debc0b-994a-4004-98f6-4895ba453c84`,
@@ -369,8 +371,8 @@ app.post('/test5',function(req, res){
         },
         data: {
             "files": [{
-                "name": "main.py",
-                "content": "print(42)"
+                "name": name,
+                "content": content
             }]
             
         }
