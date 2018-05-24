@@ -280,7 +280,7 @@ app.post('/test3',function(req, res){
         console.log(response.statusText);
         console.log(response.headers);
         console.log(response.config);
-        res.send({"success":"success happended"});
+        res.send(response.data);
       })
       .catch(function (error) {
         if (error.response) {
