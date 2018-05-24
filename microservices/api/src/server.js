@@ -354,7 +354,7 @@ app.post('/test4',function(req, res){
 });
 app.post('/test5',function(req, res){
     var lang=req.body.language;
-    var input=req.body.stdin;
+    var stdin=req.body.stdin;
     var name=req.body.name;
     var content=req.body.content;
     console.log('lang : '+lang);
