@@ -275,6 +275,11 @@ app.post('/test3',function(req, res){
         res.setHeader('Content-Type','application/json');
         
         console.log("inside success function call");
+        console.log(response.data);
+        console.log(response.status);
+        console.log(response.statusText);
+        console.log(response.headers);
+        console.log(response.config);
         res.send({"success":"success happended"});
       })
       .catch(function (error) {
