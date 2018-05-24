@@ -370,6 +370,7 @@ app.post('/test5',function(req, res){
 
         },
         data: {
+            "stdin": stdin,
             "files": [{
                 "name": name,
                 "content": content
