@@ -352,6 +352,66 @@ app.post('/test4',function(req, res){
         console.log('error config '+error.config);
       });
 });
+app.post('/test5',function(req, res){
+    var lang=req.body.language;
+    var input=req.body.input;
+    var files=req.body.files;
+    console.log('lang : '+lang);
+    console.log('input : '+input);
+    console.log('files : '+files);
+    var options = {
+        url: `https://run.glot.io/languages/python/latest`,
+        method: 'post',
+        headers: {
+            'Authorization': `Token 92debc0b-994a-4004-98f6-4895ba453c84`,
+            'Content-type': 'application/json'
+
+        },
+        data: {
+            "files": [{
+                "name": "main.py",
+                "content": "print(42)"
+            }]
+            
+        }
+    }
+    axios(options)
+      .then(function (response) {
+        //console.log('response from server '+response);
+        //console.log('response.data stdout' + resdata.data.stdout +' stderror'+ resdata.data.stderr+ 'error ' +resdata.data.error );
+        res.setHeader('Content-Type','application/json');
+        
+        console.log("inside success function call");
+        console.log(response.data);
+        console.log(response.status);
+        console.log(response.statusText);
+        console.log(response.headers);
+        console.log(response.config);
+        res.send(response.data);
+      })
+      .catch(function (error) {
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.log('res data :'+error.response.data);
+          console.log('res status :'+error.response.status);
+          console.log('res headers :'+error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+          // http.ClientRequest in node.js
+          console.log('error request'+error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log('Error', error.message);
+          res.setHeader('Content-Type','application/json');
+	      res.send({"error":"some error occured"});
+        }
+        console.log('error config '+error.config);
+      });
+    
+
+});
 server.listen(8080, function () {
   console.log('Example app listening on port 8080!');
 });
