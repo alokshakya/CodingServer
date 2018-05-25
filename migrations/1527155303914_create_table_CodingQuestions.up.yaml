@@ -1,0 +1,10 @@
+- args:
+    sql: CREATE TABLE "CodingQuestions"("id" serial NOT NULL, "title" text NOT NULL,
+      "description" text NOT NULL, "sampleInput" text NOT NULL, "sampleOutput" text
+      NOT NULL, "submitInput" text NOT NULL, "submitOutput" text NOT NULL, "created"
+      timestamptz NOT NULL DEFAULT now(), "author" integer NOT NULL, PRIMARY KEY ("id")
+      )
+  type: run_sql
+- args:
+    name: CodingQuestions
+  type: add_existing_table_or_view
